@@ -1,0 +1,36 @@
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand">
+      {{'Sitetitle' | translate }}
+    </a>
+
+    <ul id="listes" class="list-group">
+      <li class="list-group-item"><a routerLink="{{ translate.currentLang }}/home">Listes</a></li>
+      <li class="list-group-item"><a routerLink="{{ translate.currentLang }}/details">Détails</a></li>
+    </ul>
+
+    <ul id="listes" class="list-group">
+      <li class="list-group-item">
+        <a [class.active]="translate.currentLang === 'fr'" (click)="switchLang('fr')" routerLink="fr/{{ pageName }}">FR</a>
+      </li>
+
+      <li class="list-group-item">
+        <a [class.active]="translate.currentLang === 'nl'" (click)="switchLang('nl')" routerLink="nl/{{ pageName }}">NL</a>
+      </li>
+    </ul>
+
+    <!-- <span class="form-inline">
+      <select class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">
+        <option *ngFor="let language of translate.getLangs()" [value]="language"
+          [selected]="language === translate.currentLang">
+          {{ language }}
+        </option>
+      </select>
+    </span> -->
+  </div>
+</nav>
+
+<div class="container">
+  {{ translate.currentLang }}
+  <router-outlet></router-outlet>
+</div>
